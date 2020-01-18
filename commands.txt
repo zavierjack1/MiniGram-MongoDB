@@ -1,0 +1,16 @@
+docker run -it --rm --network local_network \
+    mongo --host some-mongo \
+        -u mongoadmin \
+        -p secret \
+        --authenticationDatabase admin \
+        some-db
+
+
+docker run -d --network local_network --name my_mongo -p 27017:27017 -v $(pwd)/MongoDBApp:/MongoDBApp -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
+
+mongo -u mongoadmin -p secret < createUser.js
+
+mongo -u mongoadmin -p secret < createUser.js
+
+db.createUser({user: "foo2" , pwd: "bar", roles: [  "userAdminAnyDatabase","readWriteAnyDatabase" ]});
+db.createUser({user: "foo2" , pwd: "bar", roles: [  "userAdminAnyDatabase","readWriteAnyDatabase" ]});
