@@ -14,3 +14,7 @@ mongo -u mongoadmin -p secret < createUser.js
 
 db.createUser({user: "foo2" , pwd: "bar", roles: [  "userAdminAnyDatabase","readWriteAnyDatabase" ]});
 db.createUser({user: "foo2" , pwd: "bar", roles: [  "userAdminAnyDatabase","readWriteAnyDatabase" ]});
+
+mongo -u meanuser -p meanuser mean_course
+
+db.posts.find()
