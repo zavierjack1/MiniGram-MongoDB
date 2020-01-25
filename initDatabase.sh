@@ -1,0 +1,1 @@
+mongo -u mongoadmin -p secret < /MongoDBApp/createUser.js

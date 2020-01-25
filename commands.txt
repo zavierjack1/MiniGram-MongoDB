@@ -10,7 +10,11 @@ docker run -d --network local_network --name my_mongo -p 27017:27017 -v $(pwd)/M
 
 docker run -d --network local_network --name my_mongo -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=secret zavierjack1/mean-course-mongo
 
-mongo -u mongoadmin -p secret < createUser.js
+docker run -d --name my_mongo_test -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -p 27018:27017 -e MONGO_INITDB_ROOT_PASSWORD=secret test_mongo
+
+
+docker run -d --network local_network --name my_mongo -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -p 27017:27017 -e MONGO_INITDB_ROOT_PASSWORD=secret zavierjack1/mean_course_mongo:latest
+
 mongo -u mongoadmin -p secret < createUser.js
 
 db.createUser({user: "foo2" , pwd: "bar", roles: [  "userAdminAnyDatabase","readWriteAnyDatabase" ]});
@@ -19,3 +23,5 @@ db.createUser({user: "foo2" , pwd: "bar", roles: [  "userAdminAnyDatabase","read
 mongo -u meanuser -p meanuser mean_course
 
 db.posts.find()
+
+mongo -u meanuser -p meanuser --authenticationDatabase mean_course
