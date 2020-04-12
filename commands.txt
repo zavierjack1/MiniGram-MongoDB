@@ -15,6 +15,15 @@ docker run -d --name my_mongo_test -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -p 2
 
 docker run -d --network local_network --name my_mongo -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -p 27017:27017 -e MONGO_INITDB_ROOT_PASSWORD=secret zavierjack1/mean_course_mongo:latest
 
+
+docker run -d \
+--name my_mongo \
+-e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
+-p 27017:27017 -e MONGO_INITDB_ROOT_PASSWORD=secret \
+zavierjack1/mean_course_mongo:latest
+
+
+
 mongo -u mongoadmin -p secret < createUser.js
 
 db.createUser({user: "foo2" , pwd: "bar", roles: [  "userAdminAnyDatabase","readWriteAnyDatabase" ]});
